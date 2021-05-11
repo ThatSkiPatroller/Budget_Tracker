@@ -36,18 +36,18 @@ self.addEventListener("activate", event => {
                 })
             );
         })
-        .then(() => self.ClientRectList.claim())
-    );
+    ); 
+    self.clients.claim()
 });
 
 self.addEventListener("fetch", event => {
-    if (
-        event.request.method !== "GET" ||
-        !event.responseWith(fetch(event.request))
-    ) {
-        event.respondWith(fetch(event.request));
-        return;
-    }
+    // if (
+    //     event.request.method !== "GET" ||
+    //     !event.respondWith(fetch(event.request))
+    // ) {
+    //     event.respondWith(fetch(event.request));
+    //     return;
+    // }
 
     if (event.request.url.includes("/api/transactions")) {
         event.respondWith(
@@ -64,14 +64,14 @@ self.addEventListener("fetch", event => {
     }
     
     event.respondWith(
-        caches.match(event.request).then(cachesResponse => {
+        caches.match(event.request).then(cachedResponse => {
             if (cachedResponse) {
                 return cachedResponse;
             }
 
             return caches.open(RUNTIME_CACHE).then(cache => {
                 return fetch(event.request).then(response => {
-                    return cache.put(event.request, response,clone()).then(() => {
+                    return cache.put(event.request, response.clone()).then(() => {
                         return response;
                     })
                 })
