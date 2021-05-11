@@ -1,7 +1,7 @@
 # Budget Tracker
 https://github.com/ThatSkiPatroller/Budget_Tracker
 # Description
-This application is a budget tracker that allows the user to add funds, subtract funds, view transaction history and graph their budget. This PWA can be downloaded from the browser and works online and offline.  
+This application is a budget tracker that allows the user to add funds, subtract funds, view transaction history and graph their budget. This PWA can be downloaded from the browser and works online and offline. It is also connected to a MongoDB Database and will save your input once you go back online.
 # Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
