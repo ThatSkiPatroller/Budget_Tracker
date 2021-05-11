@@ -41,14 +41,7 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-    // if (
-    //     event.request.method !== "GET" ||
-    //     !event.respondWith(fetch(event.request))
-    // ) {
-    //     event.respondWith(fetch(event.request));
-    //     return;
-    // }
-
+    
     if (event.request.url.includes("/api/transactions")) {
         event.respondWith(
             caches.open(RUNTIME_CACHE).then(cache => {
